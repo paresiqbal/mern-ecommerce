@@ -17,5 +17,5 @@ app.use(cors());
 app.use("/user", userRouter);
 
 mongoose.connect(
-  "mongodb+srv://superadmin:paresthejs01!@ecommerce.hqasyo1.mongodb.net/ecommerce?retryWrites=true&w=majority"
+  "mongodb+srv://pares:pares123@ecommerce.0rsczwh.mongodb.net/?retryWrites=true&w=majority"
 );
