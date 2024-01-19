@@ -8,7 +8,7 @@ import { Router, Request, Response } from "express";
 // model
 import { UserModel, IUser } from "../models/User";
 
-// error
+// error handling
 import { UserErrors } from "../error";
 
 const router = Router();
@@ -55,4 +55,19 @@ router.post("/login", async (req: Request, res: Response) => {
   }
 });
 
+// middleware
+export const verifyToken = async (req: Request, res: Response, next: any) => {
+  const authHeader = req.headers.authorization;
+  if (authHeader) {
+    jwt.verify(authHeader, "secret", (err) => {
+      if (err) {
+        return res.sendStatus(403);
+      }
+
+      next();
+    });
+  }
+
+  return res.sendStatus(401);
+};
 export { router as userRouter };
