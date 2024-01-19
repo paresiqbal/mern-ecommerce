@@ -1,7 +1,13 @@
+// rdd
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+// router
+const router = createBrowserRouter([{ path: "/" }]);
+
 function App() {
   return (
-    <div className="m-10">
-      <h1>Hello World</h1>
+    <div>
+      <RouterProvider router={router} />
     </div>
   );
 }
