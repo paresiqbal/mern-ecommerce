@@ -11,6 +11,7 @@ const app = express();
 
 // middleware
 app.listen(3001, () => console.log("server is running"));
+app.use(express.json());
 app.use(cors());
 
 // route
