@@ -1,8 +1,19 @@
 // rdd
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+// pages
+import MainLayout from "@/pages/MainLayout";
+import Error from "@/pages/Error";
+
 // router
-const router = createBrowserRouter([{ path: "/" }]);
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainLayout />,
+    errorElement: <Error />,
+    children: [{}],
+  },
+]);
 
 function App() {
   return (
