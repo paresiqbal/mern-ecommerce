@@ -1,29 +1,43 @@
 // react
 import { useState, SyntheticEvent } from "react";
-import { UserErrors } from "@/error";
+import { useCookies } from "react-cookie";
 
 // library
 import axios from "axios";
 
+// error
+import { UserErrors } from "@/error";
+
 export default function Login() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [_, setCookie] = useCookies(["access_token"]);
 
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
 
+    // catch login api
     try {
-      await axios.post("http://localhost:3001/user/login", {
+      const result = await axios.post("http://localhost:3001/user/login", {
         username,
         password,
       });
-      alert("Logined Successfully");
+      setCookie("access_token", result.data.token);
+      localStorage.setItem("userID", result.data.token);
     } catch (err) {
-      if (err?.response?.data?.type === UserErrors.USER_ALREADY_EXISTS) {
-        alert("User already exists");
-      } else {
-        alert("Something went wrong");
+      let errorMessage: string = "";
+      switch (err.response.data.type) {
+        case UserErrors.NO_USER_FOUND:
+          errorMessage = "User not found";
+          break;
+        case UserErrors.WRONG_CREDENTIALS:
+          errorMessage.= "Wrong username or password";
+          break;
+        default:
+          errorMessage = "Something went wrong";
+
       }
+     alert("Error" + errorMessage);
     }
   };
 

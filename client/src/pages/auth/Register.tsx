@@ -1,17 +1,20 @@
 // react
 import { useState, SyntheticEvent } from "react";
-import { UserErrors } from "@/error";
 
 // library
 import axios from "axios";
 
+// error
+import { UserErrors } from "@/error";
+
 export default function Register() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
 
+    // catch register api
     try {
       await axios.post("http://localhost:3001/user/register", {
         username,
