@@ -1,6 +1,7 @@
 // react
 import { useState, SyntheticEvent } from "react";
 import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
 
 // library
 import axios from "axios";
@@ -13,6 +14,8 @@ export default function Login() {
   const [password, setPassword] = useState<string>("");
   const [_, setCookie] = useCookies(["access_token"]);
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
 
@@ -24,6 +27,7 @@ export default function Login() {
       });
       setCookie("access_token", result.data.token);
       localStorage.setItem("userID", result.data.token);
+      navigate("/");
     } catch (err) {
       let errorMessage: string = "";
       switch (err.response.data.type) {
@@ -31,13 +35,12 @@ export default function Login() {
           errorMessage = "User not found";
           break;
         case UserErrors.WRONG_CREDENTIALS:
-          errorMessage.= "Wrong username or password";
+          errorMessage = "Wrong username or password";
           break;
         default:
           errorMessage = "Something went wrong";
-
       }
-     alert("Error" + errorMessage);
+      alert("Error" + errorMessage);
     }
   };
 
