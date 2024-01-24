@@ -22,7 +22,7 @@ router.get("/", verifyToken, async (_, res: Response) => {
   }
 });
 
-router.post("/checkout", verifyToken, async (req: Request, res: Response) => {
+router.post("/checkout", async (req: Request, res: Response) => {
   const { customerID, cartItems } = req.body;
 
   try {
@@ -60,6 +60,16 @@ router.post("/checkout", verifyToken, async (req: Request, res: Response) => {
     }
 
     user.avMoney -= totalPrice;
+    user.purchasesItems.push(...productIDs);
+    await user.save();
+
+    // decrese quantity product
+    await ProductModel.updateMany(
+      { _id: { $in: productIDs } },
+      { $inc: { stock: -1 } }
+    );
+
+    res.json({ purchasesItems: user.purchasesItems });
   } catch (error) {
     res.status(400).json({ error: "Ups something wrong" });
   }
