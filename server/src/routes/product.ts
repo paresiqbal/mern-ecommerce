@@ -7,6 +7,7 @@ import { UserModel } from "../models/User";
 
 // route
 import { verifyToken } from "./user";
+import { ProductErrors, UserErrors } from "../error";
 
 const router = Router();
 
@@ -30,8 +31,35 @@ router.post("/checkout", verifyToken, async (req: Request, res: Response) => {
     const products = await ProductModel.find({ _id: { $in: productIDs } });
 
     if (!user) {
-      return res.status(400).json({ error: "User not found" });
+      return res.status(400).json({ type: UserErrors.NO_USER_FOUND });
     }
+
+    if (products.length !== productIDs.length) {
+      return res.json({ type: ProductErrors.NO_PRODUCT_FOUND });
+    }
+
+    let totalPrice = 0;
+
+    for (const item in cartItems) {
+      const product = products.find((product) => String(product._id) === item);
+
+      // check product
+      if (!product) {
+        return res.json({ type: ProductErrors.NO_PRODUCT_FOUND });
+      }
+
+      if (product.stock < cartItems[item]) {
+        return res.json({ type: ProductErrors.NOT_ENOUGH_STOCK });
+      }
+
+      totalPrice += product.price * cartItems[item];
+    }
+
+    if (user.avMoney < totalPrice) {
+      return res.json({ type: ProductErrors.NO_AVAILABLE_MONEY });
+    }
+
+    user.avMoney -= totalPrice;
   } catch (error) {
     res.status(400).json({ error: "Ups something wrong" });
   }
