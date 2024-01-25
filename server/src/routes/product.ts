@@ -3,7 +3,7 @@ import { Router, Request, Response } from "express";
 
 // model
 import { ProductModel } from "../models/product";
-import { UserModel } from "../models/User";
+import { UserModel } from "../models/user";
 
 // route
 import { verifyToken } from "./user";

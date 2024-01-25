@@ -6,7 +6,7 @@ import jwt from "jsonwebtoken";
 import { Router, Request, Response } from "express";
 
 // model
-import { UserModel, IUser } from "../models/User";
+import { UserModel, IUser } from "../models/user";
 
 // error handling
 import { UserErrors } from "../error";
