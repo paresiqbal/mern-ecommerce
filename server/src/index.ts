@@ -3,22 +3,15 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 
-// router
-import { userRouter } from "./routes/user";
-import { productRouter } from "./routes/product";
-
-// app
 const app = express();
 
 // middleware
-app.listen(3001, () => console.log("server is running"));
 app.use(express.json());
 app.use(cors());
 
-// route
-app.use("/user", userRouter);
-app.use("/product", productRouter);
-
+// connection DB
 mongoose.connect(
-  "mongodb+srv://pares:pares123@ecommerce.0rsczwh.mongodb.net/?retryWrites=true&w=majority"
+  "mongodb+srv://ecommerce:<password>@ecommerce.iaknqjh.mongodb.net/?retryWrites=true&w=majority"
 );
+
+app.listen(3001, () => console.log("Server is running on port 3001"));
