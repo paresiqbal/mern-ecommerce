@@ -6,23 +6,23 @@ import shop from "@/assets/shop.svg";
 
 export default function Navbar() {
   return (
-    <nav className="mx-auto p-4 bg-amber-400">
+    <nav className="mx-auto p-4 bg-primary">
       <div className="container mx-auto flex items-center justify-between">
         <NavLink
           to="/"
           aria-label="Go to homepage"
-          className="focus: outline-none focus-visible:ring-4 ring-neutral-900 rounded-sm ring-offset-4 ring-offset-amber-400 lg:absolute lg:left-1/2 lg:-translate-x-1/2 z-50 hover:opacity-75 transition-opacity"
+          className="focus: outline-none focus-visible:ring-4 ring-neutral-900 rounded-sm ring-offset-4 ring-offset-primary lg:absolute lg:left-1/2 lg:-translate-x-1/2 z-50 hover:opacity-75 transition-opacity"
         >
           <img src={shop} alt="Homesmart logo" width="50" className="w-20" />
         </NavLink>
         <div
           role="menubar"
-          className="hidden z-40 flex-col gap-4 absolute right-0 left-0 top-16 bg-amber-400 shadow-xl text-center p-6 text-lg font-semibold items-center lg:flex lg:flex-row lg:static lg:shadow-none lg:justify-between lg:w-full"
+          className="hidden z-40 flex-col gap-4 absolute right-0 left-0 top-16 bg-primary shadow-xl text-center p-6 text-lg font-semibold items-center lg:flex lg:flex-row lg:static lg:shadow-none lg:justify-between lg:w-full"
         >
           <NavLink
             to="/"
             role="menuitem"
-            className="py-1 px-6 text dark:text-neutral-600 focus: outline-none focus-visible:ring-4 ring-neutral-900 rounded-sm ring-offset-4 ring-offset-amber-400 text-neutral-900 hover:text-neutral-600 transition-colors"
+            className="py-1 px-6 text dark:text-neutral-600 focus: outline-none focus-visible:ring-4 ring-neutral-900 rounded-sm ring-offset-4 ring-offset-primary text-neutral-900 hover:text-neutral-600 transition-colors"
           >
             Home
           </NavLink>
