@@ -3,6 +3,7 @@ import { Outlet } from "react-router";
 
 // components
 import Navbar from "@/components/Navbar";
+import Shop from "@/pages/shop";
 
 export default function MainLayout() {
   return (
@@ -10,6 +11,7 @@ export default function MainLayout() {
       <main>
         <Navbar />
         <Outlet />
+        <Shop />
       </main>
     </div>
   );

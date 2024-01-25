@@ -66,8 +66,8 @@ export const verifyToken = async (req: Request, res: Response, next: any) => {
 
       next();
     });
+  } else {
+    return res.sendStatus(401);
   }
-
-  return res.sendStatus(401);
 };
 export { router as userRouter };
