@@ -57,14 +57,17 @@ router.post("/login", async (req: Request, res: Response) => {
   }
 });
 
+// prevent unauthorized access
 export const verifyToken = (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
+  // get token from header
   const authHeader = req.headers.authorization;
+  // check if token is provided
   if (authHeader) {
-    jwt.verify(authHeader, "secrete", (err, user) => {
+    jwt.verify(authHeader, "secrete", (err) => {
       if (err) {
         return res.status(403);
       }
