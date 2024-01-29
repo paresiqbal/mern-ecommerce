@@ -3,6 +3,9 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
+// library
+import axios from "axios";
+
 // shadcn
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -47,9 +50,22 @@ export function Register() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-  }
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/user/register",
+        values
+      );
+
+      console.log(response.data);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.error("Registration error:", error.response?.data);
+      } else {
+        console.error("Unexpected error:", error);
+      }
+    }
+  };
 
   return (
     <Card className="w-[350px]">
@@ -67,9 +83,11 @@ export function Register() {
               name="username"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Username</FormLabel>
+                  <FormLabel htmlFor="username" aria-label="username">
+                    Username
+                  </FormLabel>
                   <FormControl>
-                    <Input placeholder="pares" {...field} />
+                    <Input id="username" placeholder="pares" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -80,9 +98,11 @@ export function Register() {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel htmlFor="password" aria-label="password">
+                    Password
+                  </FormLabel>
                   <FormControl>
-                    <Input type="password" {...field} />
+                    <Input id="password" type="password" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -94,6 +114,7 @@ export function Register() {
           </form>
         </Form>
       </CardContent>
+
       <div className="flex items-center my-4">
         <div className="flex-grow">
           <Separator className="my-4" />
@@ -103,6 +124,7 @@ export function Register() {
           <Separator className="my-4" />
         </div>
       </div>
+
       <CardFooter className="flex justify-between">
         <Button className="flex gap-2 items-center">
           <FaGoogle /> Google
