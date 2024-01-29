@@ -42,7 +42,7 @@ const formSchema = z.object({
   }),
 });
 
-export function Register() {
+export default function Register() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -65,7 +65,7 @@ export function Register() {
         if (
           error?.response?.data?.type === UserErrors.USERNAME_ALREADY_EXISTS
         ) {
-          console.log("Username already exists");
+          alert("Username already exists");
         }
         console.error("Registration error:", errorMessage);
       } else {
