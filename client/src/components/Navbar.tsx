@@ -34,14 +34,14 @@ export default function Navbar() {
             Contact
           </NavLink>
           <NavLink
-            to="/signin"
+            to="/auth/signin"
             role="menuitem"
             className="py-1 px-6 text focus: outline-none focus-visible:ring-4 ring-neutral-900 shadow-xl rounded-md ring-offset-4 ring-offset-amber-400 hover:shadow-none transition-shadow text-white bg-teal-900"
           >
             Sign In
           </NavLink>
           <NavLink
-            to="/signup"
+            to="/auth/register"
             role="menuitem"
             className="py-1 px-6 text focus: outline-none focus-visible:ring-4 ring-neutral-900 shadow-xl rounded-md ring-offset-4 ring-offset-amber-400 hover:shadow-none transition-shadow text-white bg-teal-900"
           >

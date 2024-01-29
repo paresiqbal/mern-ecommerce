@@ -7,9 +7,8 @@ import ErrorLayout from "./layout/ErrorLayout";
 
 // pages
 import Shop from "@/pages/shop";
-import Auth from "@/pages/auth";
-import Login from "@/pages/auth/Login";
-import Register from "@/pages/auth/Register";
+// import Auth from "@/pages/auth";
+import Register from "@/pages/auth/register";
 
 // route
 const router = createBrowserRouter([
@@ -24,17 +23,11 @@ const router = createBrowserRouter([
         errorElement: <ErrorLayout />,
       },
       {
-        path: "/auth",
-        element: <Auth />,
+        path: "auth",
         errorElement: <ErrorLayout />,
         children: [
           {
-            path: "/auth/signin",
-            element: <Login />,
-            errorElement: <ErrorLayout />,
-          },
-          {
-            path: "/auth/signup",
+            path: "register", // Changed to a relative path
             element: <Register />,
             errorElement: <ErrorLayout />,
           },
