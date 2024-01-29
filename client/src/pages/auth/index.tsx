@@ -2,7 +2,7 @@ import { Register } from "./Register";
 
 export default function Auth() {
   return (
-    <div>
+    <div className="flex item-center justify-center">
       <Register />
     </div>
   );

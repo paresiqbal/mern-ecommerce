@@ -30,6 +30,7 @@ import {
 // icons
 import { FaFacebook } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
+import { UserErrors } from "@/error";
 
 // schema
 const formSchema = z.object({
@@ -56,11 +57,17 @@ export function Register() {
         "http://localhost:3001/user/register",
         values
       );
-
       console.log(response.data);
+      // Redirect or show success message
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        console.error("Registration error:", error.response?.data);
+        const errorMessage = error.response?.data?.error;
+        if (
+          error?.response?.data?.type === UserErrors.USERNAME_ALREADY_EXISTS
+        ) {
+          console.log("Username already exists");
+        }
+        console.error("Registration error:", errorMessage);
       } else {
         console.error("Unexpected error:", error);
       }
