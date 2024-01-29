@@ -7,6 +7,7 @@ import ErrorLayout from "./layout/ErrorLayout";
 
 // pages
 import Shop from "@/pages/shop";
+import Auth from "@/pages/auth";
 
 // route
 const router = createBrowserRouter([
@@ -18,6 +19,11 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Shop />,
+        errorElement: <ErrorLayout />,
+      },
+      {
+        path: "/auth",
+        element: <Auth />,
         errorElement: <ErrorLayout />,
       },
     ],

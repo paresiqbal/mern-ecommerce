@@ -1,14 +1,9 @@
-export default function index() {
+export default function Shop() {
   return (
-    <div>
+    <div className="text-center text-5xl font-bold">
       <h1>Shop</h1>
       <div>
-        <h2>Card</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
-          quaerat debitis quod, inventore praesentium quia numquam placeat nihil
-          impedit tenetur?
-        </p>
+        <p>All item will display here</p>
       </div>
     </div>
   );

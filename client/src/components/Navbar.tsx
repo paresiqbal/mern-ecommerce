@@ -24,7 +24,7 @@ export default function Navbar() {
             role="menuitem"
             className="py-1 px-6 text dark:text-neutral-600 focus: outline-none focus-visible:ring-4 ring-neutral-900 rounded-sm ring-offset-4 ring-offset-primary text-neutral-900 hover:text-neutral-600 transition-colors"
           >
-            Home
+            Shop
           </NavLink>
           <NavLink
             to="/"
@@ -33,15 +33,9 @@ export default function Navbar() {
           >
             Contact
           </NavLink>
+
           <NavLink
-            to="/"
-            role="menuitem"
-            className="py-1 px-6 text dark:text-neutral-600 focus: outline-none focus-visible:ring-4 ring-neutral-900 rounded-sm ring-offset-4 ring-offset-amber-400 text-neutral-900 hover:text-neutral-600 transition-colors"
-          >
-            Login
-          </NavLink>
-          <NavLink
-            to="/"
+            to="/auth"
             role="menuitem"
             className="py-1 px-6 text focus: outline-none focus-visible:ring-4 ring-neutral-900 shadow-xl rounded-md ring-offset-4 ring-offset-amber-400 hover:shadow-none transition-shadow text-white bg-teal-900"
           >
