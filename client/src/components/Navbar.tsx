@@ -6,7 +6,7 @@ import shop from "@/assets/shop.svg";
 
 export default function Navbar() {
   return (
-    <nav className="mx-auto p-4 bg-primary">
+    <nav className="mx-auto bg-primary">
       <div className="container mx-auto flex items-center justify-between">
         <NavLink
           to="/"
@@ -36,14 +36,14 @@ export default function Navbar() {
           <NavLink
             to="/auth/signin"
             role="menuitem"
-            className="py-1 px-6 text focus: outline-none focus-visible:ring-4 ring-neutral-900 shadow-xl rounded-md ring-offset-4 ring-offset-amber-400 hover:shadow-none transition-shadow text-white bg-teal-900"
+            className="py-1 px-6 text focus: outline-none focus-visible:ring-4 ring-neutral-900 rounded-md ring-offset-4  hover:shadow-none transition-shado"
           >
             Sign In
           </NavLink>
           <NavLink
             to="/auth/register"
             role="menuitem"
-            className="py-1 px-6 text focus: outline-none focus-visible:ring-4 ring-neutral-900 shadow-xl rounded-md ring-offset-4 ring-offset-amber-400 hover:shadow-none transition-shadow text-white bg-teal-900"
+            className="py-1 px-6 text focus: outline-none focus-visible:ring-4 ring-neutral-900 shadow-xl rounded-md ring-offset-4 ring-offset-amber-400 hover:shadow-none transition-shadow text-white bg-teal-800"
           >
             Sign Up
           </NavLink>

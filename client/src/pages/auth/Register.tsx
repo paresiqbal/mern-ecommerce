@@ -75,71 +75,79 @@ export default function Register() {
   };
 
   return (
-    <Card className="w-[350px]">
-      <CardHeader>
-        <CardTitle>Create an account</CardTitle>
-        <CardDescription>
-          Enter your email below to create your account.
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
-            <FormField
-              control={form.control}
-              name="username"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel htmlFor="username" aria-label="username">
-                    Username
-                  </FormLabel>
-                  <FormControl>
-                    <Input id="username" placeholder="pares" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel htmlFor="password" aria-label="password">
-                    Password
-                  </FormLabel>
-                  <FormControl>
-                    <Input id="password" type="password" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <Button type="submit" className="w-full">
-              Create Account
-            </Button>
-          </form>
-        </Form>
-      </CardContent>
+    <div className="flex flex-col gap-4 items-center justify-center my-20">
+      <Card className="w-[350px]">
+        <CardHeader>
+          <CardTitle>Create an account</CardTitle>
+          <CardDescription>
+            Enter your email below to create your account.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
+              <FormField
+                control={form.control}
+                name="username"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel htmlFor="username" aria-label="username">
+                      Username
+                    </FormLabel>
+                    <FormControl>
+                      <Input id="username" placeholder="pares" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel htmlFor="password" aria-label="password">
+                      Password
+                    </FormLabel>
+                    <FormControl>
+                      <Input id="password" type="password" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button type="submit" className="w-full">
+                Create Account
+              </Button>
+            </form>
+          </Form>
+        </CardContent>
 
-      <div className="flex items-center my-4">
-        <div className="flex-grow">
-          <Separator className="my-4" />
+        <div className="flex items-center my-4">
+          <div className="flex-grow">
+            <Separator className="my-4" />
+          </div>
+          <span className="mx-4 text-sm text-gray-600">OR CONTINUE WITH</span>
+          <div className="flex-grow">
+            <Separator className="my-4" />
+          </div>
         </div>
-        <span className="mx-4 text-sm text-gray-600">OR CONTINUE WITH</span>
-        <div className="flex-grow">
-          <Separator className="my-4" />
-        </div>
+
+        <CardFooter className="flex justify-between">
+          <Button className="flex gap-2 items-center">
+            <FaGoogle /> Google
+          </Button>
+          <Button className="flex gap-2 items-center">
+            <FaFacebook /> Facebook
+          </Button>
+        </CardFooter>
+      </Card>
+      <div className="flex gap-2">
+        <p className="text-gray-600">Already have an account ?</p>
+        <a href="/" className="hover:text-primary">
+          Sign In
+        </a>
       </div>
-
-      <CardFooter className="flex justify-between">
-        <Button className="flex gap-2 items-center">
-          <FaGoogle /> Google
-        </Button>
-        <Button className="flex gap-2 items-center">
-          <FaFacebook /> Facebook
-        </Button>
-      </CardFooter>
-    </Card>
+    </div>
   );
 }
