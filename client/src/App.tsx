@@ -9,6 +9,7 @@ import ErrorLayout from "./layout/ErrorLayout";
 import Shop from "@/pages/shop";
 import Auth from "@/pages/auth/Auth";
 import Register from "@/pages/auth/register";
+import Login from "@/pages/auth/Login";
 
 // route
 const router = createBrowserRouter([
@@ -34,6 +35,11 @@ const router = createBrowserRouter([
           {
             path: "register",
             element: <Register />,
+            errorElement: <ErrorLayout />,
+          },
+          {
+            path: "login",
+            element: <Login />,
             errorElement: <ErrorLayout />,
           },
         ],
