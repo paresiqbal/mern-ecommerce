@@ -30,6 +30,7 @@ import {
 // icons
 import { FaFacebook } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
+import { UserErrors } from "@/error";
 
 // schema
 const loginSchema = z.object({
@@ -56,14 +57,24 @@ export default function Login() {
         "http://localhost:3001/user/login", // Adjust the endpoint for login
         values
       );
-      // Handle the JWT
       localStorage.setItem("token", response.data.token); // Store the JWT in local storage
       console.log("Login successful");
       // Redirect to home page or dashboard
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        // Handle login specific errors
-        console.error("Login error:", error.response?.data?.error);
+      if (axios.isAxiosError(error) && error.response) {
+        const errorType = error.response.data.type as UserErrors;
+        switch (errorType) {
+          case UserErrors.NO_USER_FOUND:
+          case UserErrors.WRONG_CREDENTIAL:
+            alert("Invalid username or password.");
+            break;
+          case UserErrors.SERVER_ERROR:
+            alert("Server error. Please try again later.");
+            break;
+          default:
+            alert("An unexpected error occurred.");
+        }
+        console.error("Login error:", error.response.data.error);
       } else {
         console.error("Unexpected error:", error);
       }
