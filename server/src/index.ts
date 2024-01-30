@@ -6,6 +6,7 @@ import * as dotenv from "dotenv";
 
 // router
 import { userRouter } from "./routes/userRoute";
+import { productRouter } from "./routes/productRoute";
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(cors());
 
 // route
 app.use("/user", userRouter);
+app.use("/product", productRouter);
 
 // connection DB
 mongoose.connect(
