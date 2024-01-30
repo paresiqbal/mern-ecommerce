@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 // zod
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -43,6 +45,8 @@ const loginSchema = z.object({
 });
 
 export default function Login() {
+  const navigate = useNavigate();
+
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -59,7 +63,7 @@ export default function Login() {
       );
       localStorage.setItem("token", response.data.token); // Store the JWT in local storage
       console.log("Login successful");
-      // Redirect to home page or dashboard
+      navigate("/"); // Redirect to the home page
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {
         const errorType = error.response.data.type as UserErrors;
