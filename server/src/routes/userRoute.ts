@@ -50,7 +50,7 @@ router.post("/login", async (req: Request, res: Response) => {
       return res.status(400).json({ type: UserErrors.WRONG_CREDENTIAL });
     }
 
-    const token = jwt.sign({ id: user._id }, "secrete");
+    const token = jwt.sign({ id: user._id }, "secret");
     res.json({ token, userID: user._id });
   } catch (error) {
     console.error("Error:", error);
@@ -58,22 +58,20 @@ router.post("/login", async (req: Request, res: Response) => {
 });
 
 // prevent unauthorized access
-export const verifyToken = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const verifyToken = (req, res, next) => {
   // get token from header
   const authHeader = req.headers.authorization;
   // check if token is provided
   if (authHeader) {
-    jwt.verify(authHeader, "secrete", (err) => {
+    jwt.verify(authHeader, "secret", (err) => {
       if (err) {
         return res.status(403);
       }
 
       next();
     });
+  } else {
+    res.sendStatus(401);
   }
 
   return res.sendStatus(401);
