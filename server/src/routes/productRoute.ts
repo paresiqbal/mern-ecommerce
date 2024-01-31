@@ -6,13 +6,13 @@ import { ProductModel } from "../models/Product";
 import { UserModel } from "../models/User";
 
 // middleware
-// import { verifyToken } from "./userRoute";
+import { verifyToken } from "./userRoute";
 import { ProductErrors, UserErrors } from "../error";
 
 const router = Router();
 
 // get all products
-router.get("/", async (_, res: Response) => {
+router.get("/", verifyToken, async (_, res: Response) => {
   try {
     const getProducts = await ProductModel.find({});
 
@@ -23,7 +23,7 @@ router.get("/", async (_, res: Response) => {
 });
 
 // add product to cart
-router.post("/checkout", async (req: Request, res: Response) => {
+router.post("/checkout", verifyToken, async (req: Request, res: Response) => {
   const { customerID, cartItems } = req.body;
   try {
     const user = await UserModel.findById(customerID);
