@@ -1,9 +1,15 @@
+// hooks
+import { useGetProducts } from "@/hooks/useGetProducts";
+
 export default function Shop() {
+  const { products } = useGetProducts();
+
   return (
     <div className="text-center text-5xl font-bold">
-      <h1>Shop</h1>
       <div>
-        <p>All item will display here</p>
+        {products.map((product) => (
+          <div>{product.productName}</div>
+        ))}
       </div>
     </div>
   );
