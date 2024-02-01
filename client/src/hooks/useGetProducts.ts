@@ -1,25 +1,18 @@
-// react
 import { useEffect, useState } from "react";
-
-// library
 import axios from "axios";
-
-// hooks
 import { useGetToken } from "./useGetToken";
+import { IProduct } from "../../../server/src/models/Product";
 
-// get all products
 export const useGetProducts = () => {
-  const [products, setProducts] = useState([]);
+  // Specify the type of the products state
+  const [products, setProducts] = useState<IProduct[]>([]);
   const { headers } = useGetToken();
 
   const getProducts = async () => {
     try {
-      const fetchedProducts = await axios.get(
-        "http://localhost:3001/products",
-        {
-          headers,
-        }
-      );
+      const fetchedProducts = await axios.get("http://localhost:3001/product", {
+        headers,
+      });
       setProducts(fetchedProducts.data.products);
     } catch (error) {
       console.log("Error:", error);

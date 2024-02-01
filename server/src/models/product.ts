@@ -4,9 +4,9 @@ import { Schema, model } from "mongoose";
 export interface IProduct {
   productName: string;
   price: number;
-  descripttion: string;
-  imageUrl: string;
+  description: string;
   stockQuantity: number;
+  imageURL: string;
 }
 
 const productSchema = new Schema<IProduct>({
@@ -16,8 +16,8 @@ const productSchema = new Schema<IProduct>({
     required: true,
     min: [1, "Price must be greater than 0"],
   },
-  descripttion: { type: String, required: true },
-  imageUrl: { type: String, required: true },
+  description: { type: String, required: true },
+  imageURL: { type: String, required: true },
   stockQuantity: {
     type: Number,
     required: true,

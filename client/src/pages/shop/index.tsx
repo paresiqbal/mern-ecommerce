@@ -8,7 +8,9 @@ export default function Shop() {
     <div className="text-center text-5xl font-bold">
       <div>
         {products.map((product) => (
-          <div>{product.productName}</div>
+          <div>
+            <p>{product.productName}</p>
+          </div>
         ))}
       </div>
     </div>
