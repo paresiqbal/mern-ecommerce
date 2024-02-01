@@ -8,7 +8,7 @@ import ErrorLayout from "./layout/ErrorLayout";
 // pages
 import Shop from "@/pages/shop";
 import Auth from "@/pages/auth/Auth";
-import Register from "@/pages/auth/register";
+import Register from "@/pages/auth/Register";
 import Login from "@/pages/auth/Login";
 
 // route

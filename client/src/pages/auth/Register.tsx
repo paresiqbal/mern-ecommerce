@@ -30,7 +30,7 @@ import {
 // icons
 import { FaFacebook } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
-import { UserErrors } from "@/error";
+import { UserErrors } from "@/models/error";
 
 // schema
 const formSchema = z.object({

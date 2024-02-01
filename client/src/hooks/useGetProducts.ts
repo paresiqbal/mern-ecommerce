@@ -1,7 +1,10 @@
+// library
 import { useEffect, useState } from "react";
 import axios from "axios";
+
+// hooks
 import { useGetToken } from "./useGetToken";
-import { IProduct } from "../../../server/src/models/Product";
+import { IProduct } from "@/models/interfaces";
 
 export const useGetProducts = () => {
   // Specify the type of the products state
