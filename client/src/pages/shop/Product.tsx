@@ -1,4 +1,6 @@
+import { IShopContext, ShopContext } from "@/context/shop-context";
 import { IProduct } from "@/models/interfaces";
+import { useContext } from "react";
 
 interface Props {
   product: IProduct;
@@ -7,6 +9,8 @@ interface Props {
 export default function Product(props: Props) {
   const { _id, productName, description, price, stockQuantity, imageURL } =
     props.product;
+
+  const { addToCart } = useContext<IShopContext>(ShopContext);
 
   return (
     <div className="max-w-sm rounded overflow-hidden shadow-lg m-4">
@@ -18,7 +22,10 @@ export default function Product(props: Props) {
         <p className="text-gray-600">Stock: {stockQuantity}</p>
       </div>
       <div className="px-6 pt-4 pb-2">
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          onClick={() => addToCart(_id)}
+        >
           Add to cart
         </button>
         {stockQuantity === 0 && (

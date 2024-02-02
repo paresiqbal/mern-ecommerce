@@ -11,6 +11,9 @@ import Auth from "@/pages/auth/Auth";
 import Register from "@/pages/auth/Register";
 import Login from "@/pages/auth/Login";
 
+// context api
+import { ShopContextProvider } from "./context/shop-context";
+
 // route
 const router = createBrowserRouter([
   {
@@ -51,7 +54,9 @@ const router = createBrowserRouter([
 function App() {
   return (
     <div>
-      <RouterProvider router={router} />
+      <ShopContextProvider>
+        <RouterProvider router={router} />
+      </ShopContextProvider>
     </div>
   );
 }
