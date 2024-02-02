@@ -14,8 +14,6 @@ export default function Product(props: Props) {
 
   const counter = getCartItems(_id);
 
-  console.log(counter);
-
   return (
     <div className="max-w-sm rounded overflow-hidden shadow-lg m-4">
       <img className="w-full" src={imageURL} alt="product image" />
@@ -30,7 +28,7 @@ export default function Product(props: Props) {
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           onClick={() => addToCart(_id)}
         >
-          Add to cart
+          Add to cart {counter > 0 && <p>{counter}</p>}
         </button>
         {stockQuantity === 0 && (
           <h3 className="text-red-500 text-xs italic">Out of stock</h3>
