@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, ReactNode } from "react";
 
 export interface IShopContext {
   getCartItems: (itemId: string) => number;
@@ -9,37 +9,35 @@ export interface IShopContext {
 
 const defaultValues: IShopContext = {
   getCartItems: () => 0,
-  addToCart: () => null,
-  removeFromCart: () => null,
-  updateCartItem: () => null,
+  addToCart: () => {},
+  removeFromCart: () => {},
+  updateCartItem: () => {},
 };
 
 export const ShopContext = createContext<IShopContext>(defaultValues);
 
-export const ShopContextProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState<{ [key: string]: number } | {}>(
-    {}
-  );
+interface ShopContextProviderProps {
+  children: ReactNode;
+}
+
+export const ShopContextProvider = ({ children }: ShopContextProviderProps) => {
+  const [cartItems, setCartItems] = useState<{ [key: string]: number }>({});
 
   const getCartItems = (itemId: string): number => {
-    if (cartItems[itemId]) {
-      return cartItems[itemId];
-    }
-
-    return 0;
+    return cartItems[itemId] || 0;
   };
 
-  // Functions to be implemented
   const addToCart = (itemId: string) => {
-    if (!cartItems[itemId]) {
-      setCartItems({ ...cartItems, [itemId]: 1 });
-    } else {
-      setCartItems({ ...cartItems, [itemId]: cartItems[itemId] + 1 });
-    }
+    setCartItems((prevCartItems) => ({
+      ...prevCartItems,
+      [itemId]: (prevCartItems[itemId] || 0) + 1,
+    }));
   };
+
   const removeFromCart = (itemId: string) => {
     /* Implementation */
   };
+
   const updateCartItem = (newAmount: number, itemId: string) => {
     /* Implementation */
   };
