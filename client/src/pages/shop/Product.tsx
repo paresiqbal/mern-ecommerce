@@ -10,7 +10,11 @@ export default function Product(props: Props) {
   const { _id, productName, description, price, stockQuantity, imageURL } =
     props.product;
 
-  const { addToCart } = useContext<IShopContext>(ShopContext);
+  const { addToCart, getCartItems } = useContext<IShopContext>(ShopContext);
+
+  const counter = getCartItems(_id);
+
+  console.log(counter);
 
   return (
     <div className="max-w-sm rounded overflow-hidden shadow-lg m-4">
