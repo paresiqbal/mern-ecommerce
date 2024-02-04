@@ -1,6 +1,21 @@
-import { IShopContext, ShopContext } from "@/context/shop-context";
-import { IProduct } from "@/models/interfaces";
+// react
 import { useContext } from "react";
+
+// interfaces models
+import { IProduct } from "@/models/interfaces";
+
+// custom context
+import { IShopContext, ShopContext } from "@/context/shop-context";
+
+// shadcn
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 interface Props {
   product: IProduct;
@@ -15,25 +30,18 @@ export default function Product(props: Props) {
   const counter = getCartItems(_id);
 
   return (
-    <div className="max-w-sm rounded overflow-hidden shadow-lg m-4">
-      <img className="w-full" src={imageURL} alt="product image" />
-      <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-2">{productName}</div>
-        <p className="text-gray-700 text-base">{description}</p>
-        <p className="text-gray-800 font-bold">${price}</p>
-        <p className="text-gray-600">Stock: {stockQuantity}</p>
-      </div>
-      <div className="px-6 pt-4 pb-2">
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          onClick={() => addToCart(_id)}
-        >
-          Add to cart {counter > 0 && <p>{counter}</p>}
-        </button>
-        {stockQuantity === 0 && (
-          <h3 className="text-red-500 text-xs italic">Out of stock</h3>
-        )}
-      </div>
-    </div>
+    <Card>
+      <CardHeader>
+        <img src={imageURL} alt="product_image" />
+        <CardTitle>{productName}</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <CardDescription>{description}</CardDescription>
+      </CardContent>
+      <CardFooter className="flex flex-col">
+        <p className="font-bold">Rp. {price},000</p>
+        <p>Stock ({stockQuantity})</p>
+      </CardFooter>
+    </Card>
   );
 }
