@@ -16,6 +16,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 interface Props {
   product: IProduct;
@@ -41,6 +42,11 @@ export default function Product(props: Props) {
       <CardFooter className="flex flex-col">
         <p className="font-bold">Rp. {price},000</p>
         <p>Stock ({stockQuantity})</p>
+        <div className="flex justify-between items-center">
+          <Button onClick={() => addToCart(_id)} disabled={stockQuantity === 0}>
+            {counter > 0 ? `(${counter}) Add More` : "Add to Cart"}
+          </Button>
+        </div>
       </CardFooter>
     </Card>
   );
