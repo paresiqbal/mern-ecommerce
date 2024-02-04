@@ -32,7 +32,7 @@ export default function Product(props: Props) {
   return (
     <Card>
       <CardHeader>
-        <img src={imageURL} alt="product_image" />
+        <img src={imageURL} className="rounded-md" alt="product_image" />
         <CardTitle>{productName}</CardTitle>
       </CardHeader>
       <CardContent>
