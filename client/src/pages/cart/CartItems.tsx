@@ -8,11 +8,15 @@ export default function cartItems(props: Props) {
   const { _id, imageURL, productName, price } = props.product;
 
   return (
-    <div>
-      <img className="w-full" src={imageURL} alt="product image" />
-      <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-2">{productName}</div>
-        <p className="text-gray-800 font-bold">${price}</p>
+    <div className="flex items-center bg-white shadow-lg rounded-lg overflow-hidden">
+      <img
+        className="w-20 h-20 object-cover"
+        src={imageURL}
+        alt={`Image of ${productName}`}
+      />
+      <div className="px-4 py-2">
+        <div className="text-sm font-bold">{productName}</div>
+        <p className="text-xs text-gray-600">${price}</p>
       </div>
     </div>
   );

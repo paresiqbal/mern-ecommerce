@@ -27,11 +27,11 @@ export default function Navbar() {
             Shop
           </NavLink>
           <NavLink
-            to="/"
+            to="/cart"
             role="menuitem"
             className="py-1 px-6 text lg:mr-auto dark:text-neutral-600 focus: outline-none focus-visible:ring-4 ring-neutral-900 rounded-sm ring-offset-4 ring-offset-amber-400 text-neutral-900 hover:text-neutral-600 transition-colors"
           >
-            Contact
+            Cart
           </NavLink>
           <NavLink
             to="/auth/signin"
