@@ -10,6 +10,7 @@ import Shop from "@/pages/shop";
 import Auth from "@/pages/auth/Auth";
 import Register from "@/pages/auth/Register";
 import Login from "@/pages/auth/Login";
+import Cart from "@/pages/cart";
 
 // context api
 import { ShopContextProvider } from "./context/shop-context";
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
         path: "/",
         element: <Shop />,
         errorElement: <ErrorLayout />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: "auth",
