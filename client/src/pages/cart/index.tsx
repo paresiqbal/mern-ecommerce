@@ -35,6 +35,11 @@ export default function Cart() {
                   <p className="text-gray-800 text-base">
                     Quantity: {quantity}
                   </p>
+                  <div className="flex">
+                    <button>-</button>
+                    <input type="number" />
+                    <button>+</button>
+                  </div>
                 </div>
               </div>
             );
