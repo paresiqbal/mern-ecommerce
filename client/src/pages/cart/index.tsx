@@ -18,7 +18,7 @@ export default function Cart() {
             return (
               <div
                 key={product._id}
-                className="max-w-sm rounded overflow-hidden shadow-lg bg-white"
+                className="max-w-sm rounded overflow-hidden shadow-lg bg-white py-2"
               >
                 <img
                   className="w-full h-48 object-cover"
