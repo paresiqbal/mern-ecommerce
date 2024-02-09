@@ -7,7 +7,7 @@ export default function Cart() {
   const { getCartItems } = useContext<IShopContext>(ShopContext);
 
   const { products } = useGetProducts();
-  console.log("Cart Items:", getCartItems);
+
   return (
     <div className="container mx-auto p-6">
       <h1 className="text-2xl font-bold mb-6">Cart Items</h1>
