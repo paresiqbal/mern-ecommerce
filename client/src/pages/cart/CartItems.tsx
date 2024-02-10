@@ -1,26 +1,30 @@
-import { IShopContext, ShopContext } from "@/context/shop-context";
 import { IProduct } from "@/models/interfaces";
-import { useContext } from "react";
 
 interface Props {
   product: IProduct;
 }
 
-export default function cartItems(props: Props) {
-  const { _id, imageURL, productName, price } = props.product;
-  const { addToCard, removeFromCart, updateCartItem } =
-    useContext<IShopContext>(ShopContext);
-
+export default function CartItems(props: Props) {
+  const { _id, productName, imageURL, price, stockQuantity } = props.product;
   return (
-    <div className="flex items-center bg-white shadow-lg rounded-lg overflow-hidden">
+    <div
+      key={_id}
+      className="max-w-sm rounded overflow-hidden shadow-lg bg-white py-2"
+    >
       <img
-        className="w-20 h-20 object-cover"
+        className="w-full h-48 object-cover"
         src={imageURL}
-        alt={`Image of ${productName}`}
+        alt={productName}
       />
-      <div className="px-4 py-2">
-        <div className="text-sm font-bold">{productName}</div>
-        <p className="text-xs text-gray-600">${price}</p>
+      <div className="px-6 py-4">
+        <div className="font-bold text-xl mb-2">{productName}</div>
+        <p className="text-gray-800 text-base">Price: ${price}</p>
+        <p className="text-gray-800 text-base">Quantity: {stockQuantity}</p>
+        <div className="flex">
+          <button>-</button>
+          <input type="number" />
+          <button>+</button>
+        </div>
       </div>
     </div>
   );
