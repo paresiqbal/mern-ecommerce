@@ -3,13 +3,15 @@ import { useGetProducts } from "@/hooks/useGetProducts";
 import { IProduct } from "@/models/interfaces";
 import { useContext } from "react";
 import CartItems from "./CartItems";
+import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
-  const { getCartItems, getTotalCartItems } =
+  const { getCartItems, getTotalCartItems, checkout } =
     useContext<IShopContext>(ShopContext);
 
   const { products } = useGetProducts();
   const totalAmount = getTotalCartItems();
+  const navigate = useNavigate();
 
   return (
     <div className="container mx-auto p-6">
@@ -23,12 +25,14 @@ export default function Cart() {
           return null;
         })}
       </div>
-      {totalAmount > 0 && (
+      {totalAmount > 0 ? (
         <div>
           <h2>Sub total: {totalAmount.toFixed(3)}</h2>
-          <button>Continue Shopping</button>
-          <button>Checkout</button>
+          <button onClick={() => navigate("/")}>Continue Shopping</button>
+          <button onClick={checkout}>Checkout</button>
         </div>
+      ) : (
+        <h1>You haven't added an items yet</h1>
       )}
     </div>
   );
