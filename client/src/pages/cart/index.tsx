@@ -23,11 +23,13 @@ export default function Cart() {
           return null;
         })}
       </div>
-      <div>
-        <h2>Sub total: {totalAmount}</h2>
-        <button>Continue Shopping</button>
-        <button>Checkout</button>
-      </div>
+      {totalAmount > 0 && (
+        <div>
+          <h2>Sub total: {totalAmount.toFixed(3)}</h2>
+          <button>Continue Shopping</button>
+          <button>Checkout</button>
+        </div>
+      )}
     </div>
   );
 }
