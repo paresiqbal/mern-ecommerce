@@ -18,8 +18,13 @@ export default function Cart() {
           if (cartItemCount !== undefined && cartItemCount !== 0) {
             return <CartItems key={product._id} product={product} />;
           }
-          return null; // return null if cartItemCount is 0 or undefined
+          return null;
         })}
+      </div>
+      <div>
+        <h2>Sub total:</h2>
+        <button>Continue Shopping</button>
+        <button>Checkout</button>
       </div>
     </div>
   );
