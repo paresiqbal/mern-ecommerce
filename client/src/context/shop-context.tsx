@@ -35,7 +35,7 @@ export const ShopContextProvider = ({ children }: ShopContextProviderProps) => {
   const addToCart = (itemId: string) => {
     setCartItems((prevCartItems) => ({
       ...prevCartItems,
-      [itemId]: prevCartItems[itemId] - 1,
+      [itemId]: (prevCartItems[itemId] || 0) + 1,
     }));
   };
 
