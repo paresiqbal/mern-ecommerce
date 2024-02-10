@@ -5,9 +5,11 @@ import { useContext } from "react";
 import CartItems from "./CartItems";
 
 export default function Cart() {
-  const { getCartItems } = useContext<IShopContext>(ShopContext);
+  const { getCartItems, getTotalCartItems } =
+    useContext<IShopContext>(ShopContext);
 
   const { products } = useGetProducts();
+  const totalAmount = getTotalCartItems();
 
   return (
     <div className="container mx-auto p-6">
@@ -22,7 +24,7 @@ export default function Cart() {
         })}
       </div>
       <div>
-        <h2>Sub total:</h2>
+        <h2>Sub total: {totalAmount}</h2>
         <button>Continue Shopping</button>
         <button>Checkout</button>
       </div>

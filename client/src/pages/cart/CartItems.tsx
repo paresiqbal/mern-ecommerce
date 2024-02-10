@@ -28,7 +28,7 @@ export default function CartItems(props: Props) {
         <p className="text-gray-800 text-base">Price: ${price}</p>
         <p className="text-gray-800 text-base">Quantity: {stockQuantity}</p>
         <div className="flex">
-          <button onClick={() => addToCart(_id)}>-</button>
+          <button onClick={() => removeFromCart(_id)}>-</button>
           <input
             type="number"
             value={cartItemCount}
