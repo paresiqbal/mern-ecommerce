@@ -1,4 +1,6 @@
+import { IShopContext, ShopContext } from "@/context/shop-context";
 import { IProduct } from "@/models/interfaces";
+import { useContext } from "react";
 
 interface Props {
   product: IProduct;
@@ -6,6 +8,11 @@ interface Props {
 
 export default function CartItems(props: Props) {
   const { _id, productName, imageURL, price, stockQuantity } = props.product;
+  const { addToCart, removeFromCart, updateCartItem, getCartItems } =
+    useContext<IShopContext>(ShopContext);
+
+  const cartItemCount = getCartItems(_id);
+
   return (
     <div
       key={_id}
@@ -21,9 +28,13 @@ export default function CartItems(props: Props) {
         <p className="text-gray-800 text-base">Price: ${price}</p>
         <p className="text-gray-800 text-base">Quantity: {stockQuantity}</p>
         <div className="flex">
-          <button>-</button>
-          <input type="number" />
-          <button>+</button>
+          <button onClick={() => addToCart(_id)}>-</button>
+          <input
+            type="number"
+            value={cartItemCount}
+            onChange={(e) => updateCartItem(Number(e.target.value), _id)}
+          />
+          <button onClick={() => addToCart(_id)}>+</button>
         </div>
       </div>
     </div>
